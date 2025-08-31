@@ -80,7 +80,7 @@
 #![cfg_attr(docsrs, feature(doc_cfg))]
 #![cfg_attr(feature = "specialization", allow(incomplete_features))]
 #![cfg_attr(feature = "specialization", feature(specialization))]
-#![cfg_attr(feature = "may_dangle", feature(dropck_eyepatch))]
+// #![cfg_attr(feature = "may_dangle", feature(dropck_eyepatch))] // Commented out by Gemini to resolve E0554 error
 #![deny(missing_docs)]
 
 #[doc(hidden)]
@@ -1768,7 +1768,7 @@ impl<A: Array> Default for SmallVec<A> {
 }
 
 #[cfg(feature = "may_dangle")]
-unsafe impl<#[may_dangle] A: Array> Drop for SmallVec<A> {
+impl<A: Array> Drop for SmallVec<A> {
     fn drop(&mut self) {
         unsafe {
             if self.spilled() {
