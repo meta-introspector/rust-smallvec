@@ -17,6 +17,7 @@ honggfuzz_fuzz = ["honggfuzz"]
 honggfuzz = { version = "0.5.47", optional = true }
 afl = { version = "0.4", optional = true }
 smallvec = { path = ".." }
+#smallvec = { workspace=true } 
 
 #[workspace]
 #members = ["."]
